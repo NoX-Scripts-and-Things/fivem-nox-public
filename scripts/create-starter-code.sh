@@ -62,3 +62,5 @@ EOT
 EOT
   fi
 fi
+
+curl -o refresh-source.sh https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/setup-project-scaffolding.sh

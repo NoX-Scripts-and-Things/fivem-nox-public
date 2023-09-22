@@ -1,4 +1,7 @@
-# 😇 PRIVATE 😇 - FiveM Scaffolding when creating NoX scripts 😇
+# 😇 PRIVATE 😇
+
+## FiveM scaffolding when creating nox scripts 😇
+
 
 This is a public repository to allow anyone to access to the private repositories to easily create a nox script from scratch
 
@@ -13,7 +16,12 @@ source <(curl -s https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-
 Next run the following command 
 
 ```
-./init.sh
+.source/fivem-nox-public/scripts/create-starter-code.sh
+```
+
+[Optional] Run the following command to initials your git for now to enable folder highlighting
+```git
+git init
 ```
 
 feel free to run this everytime you want to keep your scaffolding modules on the latest version
