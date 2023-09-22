@@ -22,6 +22,6 @@ fi
 # Execute boilerplate, if the fx-manifest.lua does not exist then a boilerplate framework will be generated
 source ./.source/fivem-nox-public/scripts/create-starter-code.sh
 
-./fivem-nox-testing-suite.sh
-./fivem-nox-core.sh
-./fivem-nox-server.sh
+./.source/fivem-nox-public/scripts/fivem-nox-testing-suite.sh
+./.source/fivem-nox-public/scripts/fivem-nox-core.sh
+./.source/fivem-nox-public/scripts/fivem-nox-server.sh
