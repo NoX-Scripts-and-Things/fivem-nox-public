@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Pull the latest fivem nox server, this will do all the work to create a fivem server with the correct settings to test the mod with
 if [ ! -d ".source/fivem-nox-server" ]
 then

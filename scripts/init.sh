@@ -1,5 +1,10 @@
 git init
-./prepare.sh
+
+# Create the source directory if it does not exist, this will contain all the boilerplate for the project but no directly
+# required when used on your fivem server
+if [ ! -d ".source" ]; then
+  mkdir -p ".source"
+fi
 
 # Pull the fivem nox public code, This is usually used to generate assets, boilerplate and framework things
 if [ ! -d ".source/fivem-nox-public" ]

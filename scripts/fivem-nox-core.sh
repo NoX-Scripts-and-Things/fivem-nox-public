@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Pull the fivem nox core if it does not exist, this library is usually required by all scripts
 if [ ! -d ".source/fivem-nox-core" ]
 then
