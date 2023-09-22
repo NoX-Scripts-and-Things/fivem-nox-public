@@ -10,12 +10,7 @@ A basic mod will be created with unit tests and dynamic server and core
 
 Run the following command in your empty folder (It does not have to be empty the code does check if a basic project already exists then skips the starting steps)
 ```bash
-source <(curl -s https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/setup-project-scaffolding.sh)
-```
-
-[Optional] Run the following command to initials your git for now to enable folder highlighting
-```git
-git init
+source <(curl -s https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/init.sh)
 ```
 
 Now feel free to run `refresh-source.sh` as many times as you like as it will keep your `.source` folder upto date with the latest
