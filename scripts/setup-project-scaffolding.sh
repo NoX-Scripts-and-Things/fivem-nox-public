@@ -50,4 +50,4 @@ else
 fi
 
 # Execute boilerplate, if the fxmanifest.lua does not exist then a boilerplate framework will be generated
-source ./.source/fivem-nox-public/create-starter-code.sh
+source ./.source/fivem-nox-public/scripts/create-starter-code.sh
