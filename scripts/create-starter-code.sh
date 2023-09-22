@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: Split all functions out in separate files cleaning up things
+
 if [ ! -f fxmanifest.lua ]; then
     echo "FX Manifest does not exist!"
     echo "Creating one ..."
@@ -59,6 +61,21 @@ EOT
     cat <<EOT >> .gitignore
 .idea
 .source
+EOT
+  fi
+
+  if [ ! -f custom.server.settings.json ]; then
+    cat <<EOT >> custom.server.settings.json
+{
+  "server": {
+    "ensure": {
+      "normal": [
+      ],
+      "priority": [
+      ]
+    }
+  }
+}
 EOT
   fi
 fi
