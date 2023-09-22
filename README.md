@@ -9,3 +9,11 @@ Run the following command in your empty folder (It does not have to be empty the
 ```bash
 source <(curl -s https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/create-starter-code.sh)
 ```
+
+Next run the following command 
+
+```
+./init.sh
+```
+
+feel free to run this everytime you want to keep your scaffolding modules on the latest version
