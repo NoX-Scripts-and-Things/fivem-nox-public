@@ -25,3 +25,4 @@ source ./.source/fivem-nox-public/scripts/create-starter-code.sh
 ./.source/fivem-nox-public/scripts/fivem-nox-testing-suite.sh
 ./.source/fivem-nox-public/scripts/fivem-nox-core.sh
 ./.source/fivem-nox-public/scripts/fivem-nox-server.sh
+
