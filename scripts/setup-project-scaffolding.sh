@@ -32,7 +32,7 @@ fi
 
 # Run the nox-core init script to make sure we have all the assets
 cd .source/fivem-nox-core || exit 1
-./init.sh
+./refresh-source.sh
 cd ../..
 
 

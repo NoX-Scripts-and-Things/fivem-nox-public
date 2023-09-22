@@ -13,15 +13,10 @@ Run the following command in your empty folder (It does not have to be empty the
 source <(curl -s https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/setup-project-scaffolding.sh)
 ```
 
-Next run the following command 
-
-```
-.source/fivem-nox-public/scripts/create-starter-code.sh
-```
-
 [Optional] Run the following command to initials your git for now to enable folder highlighting
 ```git
 git init
 ```
 
-feel free to run this everytime you want to keep your scaffolding modules on the latest version
+Now feel free to run `refresh-source.sh` as many times as you like as it will keep your `.source` folder upto date with the latest
+code.
