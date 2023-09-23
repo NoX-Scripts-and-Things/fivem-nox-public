@@ -12,3 +12,8 @@ else
   git pull origin master
   cd ../.. || exit 1
 fi
+
+# Setup the basic server env
+cd .source/fivem-nox-server || exit 1
+./setup-env.sh
+cd ../..
