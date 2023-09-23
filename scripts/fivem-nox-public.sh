@@ -9,6 +9,7 @@ then
     cd .. || exit 1
 else
   cd .source/fivem-nox-public || exit 1
+  git reset --hard
   git pull origin master
   cd ../.. || exit 1
 fi
