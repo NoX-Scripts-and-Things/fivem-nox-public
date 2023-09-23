@@ -7,6 +7,7 @@ if [ ! -f fxmanifest.lua ]; then
     echo "Creating one ..."
     /usr/bin/cp -a -r "$(pwd)"/.source/fivem-nox-public/templates/qb-core/template/* .
     /usr/bin/cp "$(pwd)"/.source/fivem-nox-public/templates/qb-core/template/.gitignore .gitignore
+    /usr/bin/cp "$(pwd)"/.source/fivem-nox-public/templates/qb-core/template/.env .env
 fi
 
 # curl -o refresh-source.sh https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/setup-project-scaffolding.sh
