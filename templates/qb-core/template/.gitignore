@@ -1,2 +1,8 @@
+# IDE folders
 .idea
+
+# Dynamic distribution folders
 .source
+
+# Temp environment variable file
+.env

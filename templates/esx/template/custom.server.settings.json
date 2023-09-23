@@ -1,10 +1,23 @@
 {
   "server": {
-    "ensure": {
-      "normal": [
+    "settings": {
+      "server_name": "Lorem Ipsum",
+      "server_description": "Lorem Ipsum",
+      "fivem_build_hash": "6551-291d43c31e43582432683bc2a32fea24b1286f26",
+      "game_build": 2699,
+      "admin_steam_ids": [
+        "11000011391111e",
+        "110000106d47f22"
       ],
-      "priority": [
-      ]
+      "mysql": {
+        "mysql_host": "localhost",
+        "mysql_user": "admin",
+        "mysql_database": "fivem_nox"
+      }
+    },
+    "ensure": {
+      "normal": [],
+      "priority": []
     }
   }
 }

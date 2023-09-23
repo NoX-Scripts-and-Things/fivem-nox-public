@@ -1,1 +1,3 @@
-TEST = {}
+CONFIG = {
+    debug = false,
+}
