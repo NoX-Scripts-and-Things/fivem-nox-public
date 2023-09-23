@@ -19,9 +19,6 @@ else
   cd ../.. || exit 1
 fi
 
-# Execute boilerplate, if the fx-manifest.lua does not exist then a boilerplate framework will be generated
-source ./.source/fivem-nox-public/scripts/create-starter-code.sh
-
 ./.source/fivem-nox-public/scripts/fivem-nox-testing-suite.sh
 ./.source/fivem-nox-public/scripts/fivem-nox-core.sh
 ./.source/fivem-nox-public/scripts/fivem-nox-server.sh
