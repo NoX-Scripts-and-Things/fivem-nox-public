@@ -6,3 +6,10 @@
 
 # Temp environment variable file
 .env
+
+# Server generated files (Will be recreated on new git pull)
+start-server.sh
+build-server.sh
+
+# Should not be commited as this can change per developer
+custom.server.settings.json
