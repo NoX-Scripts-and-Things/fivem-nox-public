@@ -13,7 +13,7 @@ else
   cd ../.. || exit 1
 fi
 
-# Run the nox-core init script to make sure we have all the assets
+# Function internal to the nox core to refresh and pull the latest rouces inside the core
 cd .source/fivem-nox-core || exit 1
 ./refresh-source.sh
 cd ../..

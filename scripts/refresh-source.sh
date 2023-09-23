@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 
-source .env
+if [ -n "$1" ]
+then
+  FRAMEWORK=$1
+else
+  source .env
+fi
+
+if [ -z "$FRAMEWORK" ]
+then
+  echo "Framework not set!"
+  exit 1
+fi
 
 git init
 
@@ -16,12 +27,4 @@ curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-pub
 
 curl -o refresh-source.sh https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/refresh-sources.sh
 
-if [ "$FRAMEWORK" == "qb-core" ]
-then
-  curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/templates/qb-core/write-template.sh | bash
-fi
-
-if [ "$FRAMEWORK" == "esx" ]
-then
-  curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/templates/esx/write-template.sh | bash
-fi
+curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/templates/write-template.sh | bash -s -- "$FRAMEWORK"
