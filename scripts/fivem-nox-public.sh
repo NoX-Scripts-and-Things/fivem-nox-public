@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Pull the fivem nox public code, This is usually used to generate assets, boilerplate and framework things
 if [ ! -d ".source/fivem-nox-public" ]
 then
