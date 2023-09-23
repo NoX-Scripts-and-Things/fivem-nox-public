@@ -1,14 +1,11 @@
 {
   "server": {
     "settings": {
-      "server_name": "Lorem Ipsum",
-      "server_description": "Lorem Ipsum",
-      "fivem_build_hash": "6551-291d43c31e43582432683bc2a32fea24b1286f26",
-      "game_build": 2699,
-      "admin_steam_ids": [
-        "11000011391111e",
-        "110000106d47f22"
-      ],
+      "server_name": "Local FiveM Instance - Nox Script",
+      "server_description": "Local server for testing Nox Scripts",
+      "fivem_build_hash": "6683-9729577be50de537692c3a19e86365a5e0f99a54",
+      "game_build": 2944,
+      "admin_steam_ids": [],
       "mysql": {
         "mysql_host": "localhost",
         "mysql_user": "admin",

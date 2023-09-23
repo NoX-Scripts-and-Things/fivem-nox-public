@@ -9,5 +9,3 @@ if [ ! -f fxmanifest.lua ]; then
     /usr/bin/cp "$(pwd)"/.source/fivem-nox-public/templates/esx/template/.gitignore .gitignore
     /usr/bin/cp "$(pwd)"/.source/fivem-nox-public/templates/esx/template/.env .env
 fi
-
-# curl -o refresh-source.sh https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/setup-project-scaffolding.sh
