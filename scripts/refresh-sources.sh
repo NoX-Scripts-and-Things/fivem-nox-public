@@ -13,6 +13,8 @@ then
   exit 1
 fi
 
+echo "FRAMEWORK=\"$FRAMEWORK\"" > .source/.framework
+
 git init
 
 curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/fivem-structure.sh | bash

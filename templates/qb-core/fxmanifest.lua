@@ -19,7 +19,7 @@ server_scripts {
 dependencies {
     'qb-core',
     'oxmysql',
-    'nox-core'
+    'fivem-nox-core'
 }
 
 lua54 'yes'
