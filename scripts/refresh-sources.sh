@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Setup the main structure for all the requirements IE folders
+curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/fivem-structure.sh | bash
+
 if [ -e .source/.framework ]; then
   echo "[INFO] Loading framework from '.source/.framework' ..."
   source .source/.framework
@@ -20,8 +23,6 @@ if [ -z "$FRAMEWORK" ]; then
 fi
 
 git init
-
-curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/fivem-structure.sh | bash
 
 curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/fivem-nox-public.sh | bash
 
