@@ -20,5 +20,5 @@ if [ ! -f fxmanifest.lua ]; then
     echo "Creating one ..."
     /usr/bin/cp -a -r "$(pwd)"/.source/fivem-nox-public/templates/"$FRAMEWORK"/* .
     /usr/bin/cp "$(pwd)"/.source/fivem-nox-public/templates/"$FRAMEWORK"/.gitignore .gitignore
-    /usr/bin/cp "$(pwd)"/.source/fivem-nox-public/templates/"$FRAMEWORK"/.env .env
+    /usr/bin/cp "$(pwd)"/.source/fivem-nox-public/templates/.env .env
 fi
