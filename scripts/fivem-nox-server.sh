@@ -17,5 +17,5 @@ fi
 # Setup a basic environment for the server to work on
 # Expects python3 to be installed
 cd .source/fivem-nox-server || exit 1
-./setup-env.sh
+./setup-env.sh "copy-server-files"
 cd ../..
