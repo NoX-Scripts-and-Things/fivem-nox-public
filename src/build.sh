@@ -3,8 +3,17 @@ if [[ "$1" != "qb-core" && "$1" != "esx" ]]; then
   exit 1
 fi
 
-curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/prepare-python-env.sh | bash -s "$1"
+# Create the source directory
+mkdir -p .source
 
+# Pull the core code source
+git clone git@github.com:NoX-Scripts-and-Things/fivem-nox-public.git .source/fivem-nox-public
+
+./.source/fivem-nox-public/src/prepare-python-env.sh
+
+# curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/prepare-python-env.sh | bash -s "$1"
+
+# python lib/framework.py "$1"
 
 # Determine framework
 #  curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/importers/framework.sh | bash -s "qb-core"

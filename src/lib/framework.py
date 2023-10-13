@@ -1,5 +1,5 @@
 import os
-from src.lib import logger
+import logger
 from typing import Optional
 from dotenv import load_dotenv
 from pathlib import Path
