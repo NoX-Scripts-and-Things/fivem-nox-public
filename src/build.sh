@@ -1,9 +1,9 @@
 if [[ "$1" != "qb-core" && "$1" != "esx" ]]; then
-  echo "[ERROR] Unknown framework `$1`, please use either qb-core or esx"
+  echo "[ERROR] Unknown framework '$1', please use either qb-core or esx"
   exit 1
 fi
 
-curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/lib/windows/prepare-python-env.sh | bash -s "$1"
+curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/prepare-python-env.sh | bash -s "$1"
 
 
 # Determine framework
