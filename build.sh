@@ -7,7 +7,7 @@ mkdir -p .source
 git clone git@github.com:NoX-Scripts-and-Things/fivem-nox-public.git .source/fivem-nox-public
 ./.source/fivem-nox-public/src/prepare-env.sh ".source/fivem-nox-public/requirements.txt"
 
-# python .source/fivem-nox-public/init.py "$1"
+python .source/fivem-nox-public/init.py "$1"
 
 
 
