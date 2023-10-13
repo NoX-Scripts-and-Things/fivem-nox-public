@@ -13,11 +13,6 @@ The libraries contain the following:
 
 ### QB Core
 ```
-curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/refresh-sources.sh | bash -s -- "qb-core"
+curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/build.sh | bash -s -- "qb-core"
 ```
 
-
-### ESX
-```
-curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/refresh-sources.sh | bash -s -- "esx"
-```
