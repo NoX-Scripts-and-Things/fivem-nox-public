@@ -1,16 +1,14 @@
-curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/lib/prepare-python-env.sh | bash -s "qb-core"
-
-echo "awe"
+# curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/lib/windows/prepare-python-env.sh | bash -s "qb-core"
 
 
 # Determine framework
 #  curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/importers/framework.sh | bash -s "qb-core"
-#
+
 #  # Import the source importer
 #  curl -sSL -o .temp.source.importer.sh https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/importers/source.sh
 #  source .temp.source.importer.sh
 #  rm .temp.source.importer.sh
-#
+
 #  import_source "fivem-nox-core"
 
 #  # Function internal to the nox core to refresh and pull the latest rouces inside the core
