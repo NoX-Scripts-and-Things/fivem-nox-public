@@ -1,0 +1,26 @@
+fx_version 'cerulean'
+game '{{script.game}}'
+lua54 'yes'
+
+author '{{ script.author }}'
+description '{{ script.description }}'
+
+shared_scripts {
+	"config.lua"
+}
+
+{{# script.has_client}}
+client_scripts {
+	"client/*.lua"
+}
+{{/ script.has_client}}
+
+{{# script.has_server}}
+server_scripts {
+	"server/*.lua"
+}
+{{/ script.has_server}}
+
+dependencies {{# script.modules}}
+    {{.}}
+{{/script.modules}}
