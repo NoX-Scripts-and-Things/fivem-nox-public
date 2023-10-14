@@ -13,6 +13,6 @@ The libraries contain the following:
 
 ### QB Core
 ```
-curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/build.sh | bash -s -- "qb-core"
+curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/windows/gta-v/qb-core.sh | bash
 ```
 

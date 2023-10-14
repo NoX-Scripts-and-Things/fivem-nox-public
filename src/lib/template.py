@@ -2,9 +2,9 @@ import os
 import pathlib
 import chevron
 
-from src.lib import logger
 from os import path
-from src.lib import framework
+from src.lib.logger import info_log
+from src.lib.framework import cache_framework
 
 template_data = {
     'debug': 'false',
@@ -45,40 +45,39 @@ template_data = {
 }
 
 
-def template_generator(dest_directory: str = '.', source_directory: str = '.source', force: bool = False):
-    current_framework = framework.determine_framework(source_dir=source_directory)
+def template_generator(dest_directory: str = '.',
+                       source_directory: str = '.source',
+                       template_directory: str = '..\\templates\\{}',
+                       force: bool = False):
+    current_framework = cache_framework(source_dir=source_directory)
+    target_template_dir = template_directory.format(current_framework)
 
-    logger.info_log("Generating template for '{}' script".format(current_framework))
-
-    src_directory = '..\\templates\\{}'.format(current_framework)
+    info_log("Generating template for '{}' script".format(current_framework))
 
     if force is False and \
        path.exists("{}\\{}".format(dest_directory, "fxmanifest.lua")) and \
        path.exists("{}\\{}".format(dest_directory, "config.lua")):
-        logger.info_log("Script already exists in '{}', skipping template generating ...".format(dest_directory))
+        info_log("Script already exists in '{}', skipping template generating ...".format(dest_directory))
 
     else:
-        logger.info_log("Template does not exist, continuing with generating template".format(current_framework))
+        info_log("Template does not exist, continuing with generating template".format(current_framework))
 
         os.makedirs(dest_directory, exist_ok=True)
         template_data["framework"] = current_framework
 
-        for target in list(pathlib.Path(src_directory).rglob("*")):
-            full_path = "{}".format(target).replace(src_directory, dest_directory)
+        for target in list(pathlib.Path(target_template_dir).rglob("*")):
+            full_path = "{}".format(target).replace(target_template_dir, dest_directory)
 
             if target.is_file():
                 with open(target, "r") as f_in:
                     data = f_in.read()
-
                 data = chevron.render(data, template_data)
-
                 with open(full_path.replace(".mustache", ""), "w+") as f_in:
                     f_in.write(data)
-
             else:
                 os.makedirs(full_path, exist_ok=True)
 
-        logger.info_log("Template generated for '{}' script".format(current_framework))
+        info_log("Template generated for '{}' script".format(current_framework))
 
 
 if __name__ == "__main__":

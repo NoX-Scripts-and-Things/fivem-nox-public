@@ -1,13 +1,9 @@
-if [[ "$1" != "qb-core" && "$1" != "esx" ]]; then
-  echo "[ERROR] Unknown framework '$1', please use either qb-core or esx"
-  exit 1
-fi
-
 mkdir -p .source
+git init
 git clone git@github.com:NoX-Scripts-and-Things/fivem-nox-public.git .source/fivem-nox-public
-./.source/fivem-nox-public/src/prepare-env.sh ".source/fivem-nox-public/requirements.txt"
-
-python .source/fivem-nox-public/init.py "$1"
+cd ./.source/fivem-nox-public || exit 1
+./src/prepare-env.sh
+GIT_PYTHON_GIT_EXECUTABLE="/mingw64/bin/git" python init.py "qb-core"
 
 
 
