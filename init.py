@@ -20,6 +20,8 @@ import_source("fivem-nox-testing-suite", "..")
 import_source("fivem-nox-public", "../fivem-nox-core/.source")
 import_source("fivem-nox-testing-suite", "../fivem-nox-core/.source")
 
+import_source("fivem-nox-public", "../fivem-nox-server/.source")
+
 template_generator(dest_directory="..\\..",
                    source_directory="..\\..\\.source",
                    template_directory="src\\templates\\{}",
