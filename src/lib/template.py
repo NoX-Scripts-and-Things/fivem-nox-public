@@ -3,8 +3,8 @@ import pathlib
 import chevron
 
 from os import path
-from src.lib.logger import info_log
-from src.lib.framework import cache_framework
+from lib.logger import info_log
+from lib.framework import cache_framework
 
 template_data = {
     'debug': 'false',

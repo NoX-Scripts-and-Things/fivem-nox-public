@@ -1,6 +1,6 @@
 import os
 
-from src.lib.logger import info_log, fatal_log
+from lib.logger import info_log, fatal_log
 from typing import Optional
 from dotenv import load_dotenv
 from pathlib import Path

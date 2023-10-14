@@ -3,7 +3,7 @@ import shutil
 import stat
 import git
 
-from src.lib.logger import info_log, warn_log
+from lib.logger import info_log, warn_log
 
 
 def delete_everything_inside_folder(folder):
