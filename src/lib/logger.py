@@ -1,26 +1,53 @@
-def info_log(message: str) -> None:
-    print(f"[INFO] {message}")
+from colorama import Fore, Style
 
 
-def error_log(message: str) -> None:
-    print(f"[ERROR] {message}")
+class Logger:
+    logging_identifier = None
+    color = None
 
+    def __init__(self, logging_identifier, color=Fore.WHITE):
+        self.logging_identifier = logging_identifier
+        self.color = color
 
-def warn_log(message: str) -> None:
-    print(f"[WARN] {message}")
+    def info(self, message):
+        print("{}[{}]{} {}{}".format(self.color,
+                                     self.logging_identifier,
+                                     Style.RESET_ALL,
+                                     message,
+                                     Style.RESET_ALL))
 
+    def custom(self, color, message, message_main):
+        print("{}[{}]{} {}[{}]{} {}{}".format(self.color,
+                                              self.logging_identifier,
+                                              Style.RESET_ALL,
+                                              color,
+                                              message,
+                                              Style.RESET_ALL,
+                                              message_main,
+                                              Style.RESET_ALL))
 
-def debug_log(message: str) -> None:
-    print(f"[DEBUG] {message}")
+    def warn(self, message):
+        print("{}[{}]{}{}[WARN] {}{}".format(self.color,
+                                             self.logging_identifier,
+                                             Style.RESET_ALL,
+                                             Fore.LIGHTYELLOW_EX,
+                                             Style.RESET_ALL,
+                                             message))
 
+    def error(self, message):
+        print("{}[{}]{}{}[ERROR] {}{}".format(self.color,
+                                              self.logging_identifier,
+                                              Style.RESET_ALL,
+                                              Fore.RED,
+                                              Style.RESET_ALL,
+                                              message))
 
-def fatal_log(message: str) -> None:
-    raise Exception(f"[FATAL] {message}")
+    def fatal(self, message):
+        print("{}[{}]{}{}[FATAL] {}{}".format(self.color,
+                                              self.logging_identifier,
+                                              Style.RESET_ALL,
+                                              Fore.RED,
+                                              Style.RESET_ALL,
+                                              message))
+        raise Exception(message)
 
-
-if __name__ == "__main__":
-    info_log("Example INFO log")
-    error_log("Example ERROR log")
-    warn_log("Example WARN log")
-    debug_log("Example DEBUG log")
-    fatal_log("Example FATAL log")

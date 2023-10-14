@@ -3,8 +3,10 @@ import pathlib
 import chevron
 
 from os import path
-from lib.logger import info_log
+from lib.logger import Logger
 from lib.framework import cache_framework
+from colorama import Fore
+
 
 template_data = {
     'debug': 'false',
@@ -45,22 +47,26 @@ template_data = {
 }
 
 
+# Generates a template for the current framework
+# We use mustache templates for this
 def template_generator(dest_directory: str = '.',
                        source_directory: str = '.source',
                        template_directory: str = '..\\templates\\{}',
                        force: bool = False):
+    logger = Logger("TEMPLATE", Fore.LIGHTBLUE_EX)
+
     current_framework = cache_framework(source_dir=source_directory)
     target_template_dir = template_directory.format(current_framework)
 
-    info_log("Generating template for '{}' script".format(current_framework))
+    logger.info("Generating template for '{}' script".format(current_framework))
 
     if force is False and \
        path.exists("{}\\{}".format(dest_directory, "fxmanifest.lua")) and \
        path.exists("{}\\{}".format(dest_directory, "config.lua")):
-        info_log("Script already exists in '{}', skipping template generating ...".format(dest_directory))
+        logger.info("Script already exists in '{}', skipping template generating ...".format(dest_directory))
 
     else:
-        info_log("Template does not exist, continuing with generating template".format(current_framework))
+        logger.info("Template does not exist, continuing with generating template".format(current_framework))
 
         os.makedirs(dest_directory, exist_ok=True)
         template_data["framework"] = current_framework
@@ -77,7 +83,7 @@ def template_generator(dest_directory: str = '.',
             else:
                 os.makedirs(full_path, exist_ok=True)
 
-        info_log("Template generated for '{}' script".format(current_framework))
+        logger.info("Template generated for '{}' script".format(current_framework))
 
 
 if __name__ == "__main__":
