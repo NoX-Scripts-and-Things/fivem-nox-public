@@ -10,7 +10,7 @@ prepare_scripts
 (
   cd ./.source/fivem-nox-public || exit 1
   activate_python
-  GIT_PYTHON_GIT_EXECUTABLE="$(which git)" python ./src/init.py "qb-core"
+  GIT_PYTHON_GIT_EXECUTABLE="$(which git)" python ./src/init-base.py "qb-core"
 )
 
 (
