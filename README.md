@@ -6,13 +6,16 @@ Run the following command in an empty directory to pull all the core libraries r
 
 The libraries contain the following:
 
-- `Core`: The nox-core required for all the libraries
-- `Public`: Contains public code and scaffolding for creating a nox mod
-- `Server`: A lightweight server for testing your nox mod, This will pull fivem, nox-core and attempt to generate and run a server
-- `Testing` Suite: Used for unit testing your nox mod and nox core
+
+## GTA V - Windows
 
 ### QB Core
 ```
 curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/windows/gta-v/qb-core.sh | bash
+```
+
+### ESX
+```
+curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/windows/gta-v/esx.sh | bash
 ```
 
