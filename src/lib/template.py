@@ -40,7 +40,7 @@ template_data = {
         'extra_ensure_normal_list': '',
         'extra_ensure_priority_list': '',
         'max_connections': 32,
-        'custom_mods_directory_name': '',
+        'custom_mods_directory_name': 'custom',
     }
 }
 
