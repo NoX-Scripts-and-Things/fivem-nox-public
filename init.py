@@ -1,6 +1,4 @@
-import os
 import sys
-from git import Repo
 
 from src.lib.framework import cache_framework
 from src.lib.importer import import_source
@@ -17,7 +15,10 @@ cache_framework(framework, source_dir="../")
 import_source("fivem-nox-core", "..")
 import_source("fivem-nox-server", "..")
 import_source("fivem-nox-testing-suite", "..")
-# import_source("fivem-nox-public", "../")
+# import_source("fivem-nox-public", "..")
+
+import_source("fivem-nox-public", "../fivem-nox-core/.source")
+import_source("fivem-nox-testing-suite", "../fivem-nox-core/.source")
 
 template_generator(dest_directory="..\\..",
                    source_directory="..\\..\\.source",

@@ -4,37 +4,14 @@ git clone git@github.com:NoX-Scripts-and-Things/fivem-nox-public.git .source/fiv
 cd ./.source/fivem-nox-public || exit 1
 ./src/prepare-env.sh
 GIT_PYTHON_GIT_EXECUTABLE="/mingw64/bin/git" python init.py "qb-core"
+cd .source/fivem-nox-server || exit 1
+./../fivem-nox-public/src/prepare-env.sh
 
 
 
 
-
-# curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/prepare-python-env.sh | bash -s "$1"
-
-# python lib/framework.py "$1"
-
-# Determine framework
-#  curl -sSL https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/importers/framework.sh | bash -s "qb-core"
-
-#  # Import the source importer
-#  curl -sSL -o .temp.source.importer.sh https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/importers/source.sh
-#  source .temp.source.importer.sh
-#  rm .temp.source.importer.sh
-
-#  import_source "fivem-nox-core"
-
-#  # Function internal to the nox core to refresh and pull the latest rouces inside the core
-#  cd .source/fivem-nox-core || exit 1
-#  ./refresh-source.sh
-#  cd ../..
-
-
-# import_source "fivem-nox-public"
 # import_source "fivem-nox-server"
 
-
-#   # Setup a basic environment for the server to work on
-#   # Expects python3 to be installed
 #   cd .source/fivem-nox-server || exit 1
 #   ./setup-env.sh "copy-server-files"
 #   cd ../..
