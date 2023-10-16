@@ -4,9 +4,9 @@ INITIAL_SCRIPTS="$1"
 ARG="$2"
 
 # shellcheck disable=SC1090
-source <(curl -s https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/scripts/prepare-scripts.sh)
+source <(curl -s https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/common/prepare-scripts.sh)
 # shellcheck disable=SC1090
-source <(curl -s https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/src/scripts/prepare-env.sh)
+source <(curl -s https://raw.githubusercontent.com/NoX-Scripts-and-Things/fivem-nox-public/master/scripts/common/prepare-env.sh)
 
 git init
 
