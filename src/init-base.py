@@ -1,14 +1,15 @@
 import sys
+from typing import Optional
 
 from lib.framework import cache_framework
 from lib.importer import import_source
 from lib.template import template_generator
 
-framework: str = sys.argv[1]
+framework = sys.argv[1] if len(sys.argv) >= 1 else None
+internal = sys.argv[2].lower() == "true" if len(sys.argv) >= 2 else False
 
-print(sys.argv[1])
-print(sys.argv[2])
-print(sys.argv[3])
+print(framework)
+print(internal)
 
 # if framework != "qb-core" and framework != "esx":
 #     print("Unsupported framework provided: {}".format(framework))
