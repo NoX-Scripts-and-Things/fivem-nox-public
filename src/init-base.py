@@ -6,7 +6,9 @@ from lib.template import template_generator
 
 framework: str = sys.argv[1]
 
-print("awe")
+print(sys.argv[1])
+print(sys.argv[2])
+print(sys.argv[3])
 
 # if framework != "qb-core" and framework != "esx":
 #     print("Unsupported framework provided: {}".format(framework))
