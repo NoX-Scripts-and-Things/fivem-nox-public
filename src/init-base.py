@@ -30,5 +30,4 @@ if framework == "qb-core":
 
     template_generator(dest_directory="..\\..",
                        source_directory="..\\..\\.source",
-                       template_directory="src\\templates\\{}",
-                       force=True)
+                       template_directory="src\\templates\\{}")
