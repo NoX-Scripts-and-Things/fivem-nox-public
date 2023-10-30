@@ -53,13 +53,13 @@ def import_git_source(import_identifier: str,
                       source_dir: str = ".source"):
     global git_source_import_color
 
+    logger = Logger("IMPORT_SOURCE__{}".format(import_identifier.replace("-", "_").upper()), git_source_import_color)
+
     # Change color on every import to make it easier to see for a lot of imports
     if git_source_import_color == Fore.LIGHTCYAN_EX:
         git_source_import_color = Fore.LIGHTMAGENTA_EX
     else:
         git_source_import_color = Fore.LIGHTCYAN_EX
-
-    logger = Logger("IMPORT_SOURCE__{}".format(import_identifier.replace("-", "_").upper()), git_source_import_color)
 
     full_path = "{}/{}".format(source_dir, import_identifier)
     repo_url: str = '{}/{}.git'.format(main_git_repo, import_identifier)
