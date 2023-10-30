@@ -1,6 +1,4 @@
-import sys
+from lib.importer import import_git_source
 
-from lib.importer import import_source
-
-import_source("fivem-nox-public", "..")
-import_source("fivem-nox-testing-suite", "..")
+import_git_source("fivem-nox-public", "..")
+import_git_source("fivem-nox-testing-suite", "..")

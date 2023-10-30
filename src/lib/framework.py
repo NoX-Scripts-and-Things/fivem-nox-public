@@ -1,14 +1,25 @@
 import os
 
-from lib.logger import Logger
+# Because we are using the public scripts in mod folder the path will change
+# Thus first we attempt to import the mod folder path if no then use the local path for testing the script
+try:
+    from lib.logger import Logger
+except ModuleNotFoundError:
+    from logger import Logger
+
 from typing import Optional
 from dotenv import load_dotenv
 from pathlib import Path
 from colorama import Fore
 
 
-# Determine the framework and load it
-# If not defined yet set it and save it to a cache, if it is already defined then reload the cache
+# Determine if a framework exists then loads it
+# The framework will be stored in a cache folder usually called .source
+# If it is in there then we will load it from there
+# If it is not then we will make sure you pass a framework identifier to this function then
+# write it to a cache file to reuse in the future. This means you only
+# have to define the framework once, and it will be cached for other functions
+# We attempt to get the framework from the ENV VARIABLE FRAMEWORK
 def cache_framework(framework_identifier: Optional[str] = None,
                     source_dir: str = ".source") -> Optional[str]:
     logger = Logger("FRAMEWORK", Fore.LIGHTMAGENTA_EX)
@@ -28,7 +39,6 @@ def cache_framework(framework_identifier: Optional[str] = None,
     # If the framework directory also exists
     if framework is not None and os.path.exists(framework_file):
         logger.info("Cached Framework detected: '{}'".format(framework))
-        logger.info("Framework successfully set to '{}'".format(framework_identifier))
         return framework
 
     # We need to work in the source dir so need to make sure it exists
@@ -48,5 +58,6 @@ def cache_framework(framework_identifier: Optional[str] = None,
     return logger.fatal("Unable to determine framework!")
 
 
+# Test this script with a qb-core framework
 if __name__ == "__main__":
     cache_framework("qb-core", ".template/.source")

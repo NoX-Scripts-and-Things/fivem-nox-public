@@ -51,3 +51,14 @@ class Logger:
                                               message))
         raise Exception(message)
 
+
+# Show example of all logs
+if __name__ == "__main__":
+    logger = Logger("LOGGING", Fore.LIGHTCYAN_EX)
+    logger.info("Lorem Ipsum")
+    logger.warn("Lorem Ipsum")
+    logger.error("Lorem Ipsum")
+    try:
+        logger.fatal("Lorem Ipsum")
+    except:
+        pass

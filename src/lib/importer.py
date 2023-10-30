@@ -1,10 +1,18 @@
+# Because we are using the public scripts in mod folder the path will change
+# Thus first we attempt to import the mod folder path if no then use the local path for testing the script
+try:
+    from lib.logger import Logger
+except ModuleNotFoundError:
+    from logger import Logger
+
 import os
 import shutil
 import stat
 import git
 
-from lib.logger import Logger
 from colorama import Fore
+
+main_git_repo: str = "git@github.com:NoX-Scripts-and-Things"
 
 
 # Delete all files and folders inside a folder
@@ -33,11 +41,16 @@ def empty_folder(logger: Logger, folder: str):
     logger.info("All files and folders successfully deleted from '{}'".format(folder))
 
 
-def import_source(import_identifier: str,
-                  source_dir: str = ".source"):
+# We attempt to import a git repository source
+# This allows a mod to import a git repository as a source using python
+# These sources can be from testing, servers all the way to mod frameworks
+# When the source is imported again it is updated
+# You can almost see these a libraries on their own but some of them are core code for other code to work
+def import_git_source(import_identifier: str,
+                      source_dir: str = ".source"):
     logger = Logger("IMPORT_SOURCE", Fore.LIGHTCYAN_EX)
-
     full_path = "{}/{}".format(source_dir, import_identifier)
+    repo_url: str = '{}/{}.git'.format(main_git_repo, import_identifier)
 
     if os.path.exists(source_dir) is False:
         logger.info("'{}' does not exist, creating directory".format(source_dir))
@@ -49,29 +62,34 @@ def import_source(import_identifier: str,
 
     logger.info("Attempting to determine if '{}' is a git repository".format(full_path))
     try:
-        _ = git.Repo(full_path).git_dir
-        logger.warn("'{}' is a git repository".format(full_path))
+        if len(os.listdir(full_path)) != 0:
+            _ = git.Repo(full_path).git_dir
+            logger.warn("'{}' is a git repository".format(full_path))
 
-        logger.info("Reset the repository to make sure there is no changes ...")
-        git.Repo(full_path).git.reset('--hard')
+            logger.info("Reset the repository to make sure there is no changes ...")
+            git.Repo(full_path).git.reset('--hard')
 
-        logger.info("Pulling the latest from the `master` branch ...")
-        git.Repo(full_path).remotes.origin.pull()
+            logger.info("Pulling the latest from the `master` branch ...")
+            git.Repo(full_path).remotes.origin.pull()
+        else:
+            logger.info("Attempting to clone the github repository '{}'".format(repo_url))
+            git.Repo.clone_from(repo_url, full_path)
 
     except git.exc.InvalidGitRepositoryError:
+        # If a folder already exists for the git repo, but it is not a git repo then we attempt to remove the content
         logger.warn("'{}' is NOT a git repository".format(full_path))
         logger.info("Attempting to clean the folder ...".format(full_path))
         empty_folder(logger, full_path)
 
-        repo_url: str = 'git@github.com:NoX-Scripts-and-Things/{}.git'.format(import_identifier)
         logger.info("Attempting to clone the github repository '{}'".format(repo_url))
         git.Repo.clone_from(repo_url, full_path)
 
     logger.info("Successfully imported '{}'\n".format(import_identifier))
 
 
+# Test this script by importing git sources
 if __name__ == "__main__":
-    import_source("fivem-nox-core", ".template/.source")
-    import_source("fivem-nox-server", ".template/.source")
-    import_source("fivem-nox-testing-suite", ".template/.source")
-    import_source("fivem-nox-public", ".template/.source")
+    import_git_source("fivem-nox-core", ".template/.source")
+    import_git_source("fivem-nox-server", ".template/.source")
+    import_git_source("fivem-nox-testing-suite", ".template/.source")
+    import_git_source("fivem-nox-public", ".template/.source")

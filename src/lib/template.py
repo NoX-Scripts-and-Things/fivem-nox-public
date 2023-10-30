@@ -1,14 +1,22 @@
+
+# Because we are using the public scripts in mod folder the path will change
+# Thus first we attempt to import the mod folder path if no then use the local path for testing the script
+try:
+    from lib.logger import Logger
+    from lib.framework import cache_framework
+except ModuleNotFoundError:
+    from logger import Logger
+    from framework import cache_framework
+
 import os
 import pathlib
 import chevron
 
 from os import path
-from lib.logger import Logger
-from lib.framework import cache_framework
 from colorama import Fore
 
 
-template_data = {
+DEFAULT_TEMPLATE_DATA = {
     'debug': 'false',
     'script': {
         'author': 'NoX Script and Things',
@@ -52,13 +60,26 @@ template_data = {
 def template_generator(dest_directory: str = '.',
                        source_directory: str = '.source',
                        template_directory: str = '..\\templates\\{}',
-                       force: bool = False):
+                       force: bool = False,
+                       template_data: dict = DEFAULT_TEMPLATE_DATA):
     logger = Logger("TEMPLATE", Fore.LIGHTBLUE_EX)
 
-    current_framework = cache_framework(source_dir=source_directory)
-    target_template_dir = template_directory.format(current_framework)
+    logger.info("Attempting to generate a template for the current framework ...")
 
-    logger.info("Generating template for '{}' script".format(current_framework))
+    logger.info("Fetching cached framework ...")
+    detected_framework = cache_framework(source_dir=source_directory)
+    if detected_framework is None:
+        return logger.fatal("Unable to determine framework!")
+    else:
+        logger.info("Found framework '{}'".format(detected_framework))
+
+    target_template_dir = template_directory.format(detected_framework)
+    logger.info("Using template directory '{}'".format(target_template_dir))
+
+    logger.info("Generating template for '{}' script".format(detected_framework))
+
+    if force is True:
+        logger.warn("Force flag is set, continuing with generating template".format(detected_framework))
 
     if force is False and \
        path.exists("{}\\{}".format(dest_directory, "fxmanifest.lua")) and \
@@ -66,10 +87,11 @@ def template_generator(dest_directory: str = '.',
         logger.info("Script already exists in '{}', skipping template generating ...".format(dest_directory))
 
     else:
-        logger.info("Template does not exist, continuing with generating template".format(current_framework))
+        if force is False:
+            logger.info("Template does not exist, continuing with generating template".format(detected_framework))
 
         os.makedirs(dest_directory, exist_ok=True)
-        template_data["framework"] = current_framework
+        template_data["framework"] = detected_framework
 
         for target in list(pathlib.Path(target_template_dir).rglob("*")):
             full_path = "{}".format(target).replace(target_template_dir, dest_directory)
@@ -83,9 +105,13 @@ def template_generator(dest_directory: str = '.',
             else:
                 os.makedirs(full_path, exist_ok=True)
 
-        logger.info("Template generated for '{}' script".format(current_framework))
+        logger.info("Template generated for '{}' script".format(detected_framework))
 
 
+# Test the script
 if __name__ == "__main__":
-    template_generator('.template', '.template/.source', True)
+    template_generator(dest_directory='.template',
+                       source_directory='.template/.source',
+                       template_directory='..\\templates\\{}',
+                       force=True)
 
