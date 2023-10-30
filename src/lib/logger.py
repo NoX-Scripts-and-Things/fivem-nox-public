@@ -27,7 +27,7 @@ class Logger:
                                               Style.RESET_ALL))
 
     def warn(self, message):
-        print("{}[{}]{}{}[WARN] {}{}".format(self.color,
+        print("{}[{}]{}{} [WARN] {}{}".format(self.color,
                                              self.logging_identifier,
                                              Style.RESET_ALL,
                                              Fore.LIGHTYELLOW_EX,
@@ -35,7 +35,7 @@ class Logger:
                                              message))
 
     def error(self, message):
-        print("{}[{}]{}{}[ERROR] {}{}".format(self.color,
+        print("{}[{}]{}{} [ERROR] {}{}".format(self.color,
                                               self.logging_identifier,
                                               Style.RESET_ALL,
                                               Fore.RED,
@@ -43,7 +43,7 @@ class Logger:
                                               message))
 
     def fatal(self, message):
-        print("{}[{}]{}{}[FATAL] {}{}".format(self.color,
+        print("{}[{}]{}{} [FATAL] {}{}".format(self.color,
                                               self.logging_identifier,
                                               Style.RESET_ALL,
                                               Fore.RED,

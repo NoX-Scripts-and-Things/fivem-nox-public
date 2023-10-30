@@ -41,6 +41,9 @@ def empty_folder(logger: Logger, folder: str):
     logger.info("All files and folders successfully deleted from '{}'".format(folder))
 
 
+git_source_import_color = Fore.LIGHTCYAN_EX
+
+
 # We attempt to import a git repository source
 # This allows a mod to import a git repository as a source using python
 # These sources can be from testing, servers all the way to mod frameworks
@@ -48,7 +51,16 @@ def empty_folder(logger: Logger, folder: str):
 # You can almost see these a libraries on their own but some of them are core code for other code to work
 def import_git_source(import_identifier: str,
                       source_dir: str = ".source"):
-    logger = Logger("IMPORT_SOURCE", Fore.LIGHTCYAN_EX)
+    global git_source_import_color
+
+    # Change color on every import to make it easier to see for a lot of imports
+    if git_source_import_color == Fore.LIGHTCYAN_EX:
+        git_source_import_color = Fore.LIGHTMAGENTA_EX
+    else:
+        git_source_import_color = Fore.LIGHTCYAN_EX
+
+    logger = Logger("IMPORT_SOURCE__{}".format(import_identifier.replace("-", "_").upper()), git_source_import_color)
+
     full_path = "{}/{}".format(source_dir, import_identifier)
     repo_url: str = '{}/{}.git'.format(main_git_repo, import_identifier)
 
@@ -66,7 +78,7 @@ def import_git_source(import_identifier: str,
             _ = git.Repo(full_path).git_dir
             logger.warn("'{}' is a git repository".format(full_path))
 
-            logger.info("Reset the repository to make sure there is no changes ...")
+            logger.warn("Resetting the repository to make sure there is no changes ...")
             git.Repo(full_path).git.reset('--hard')
 
             logger.info("Pulling the latest from the `master` branch ...")
@@ -84,7 +96,7 @@ def import_git_source(import_identifier: str,
         logger.info("Attempting to clone the github repository '{}'".format(repo_url))
         git.Repo.clone_from(repo_url, full_path)
 
-    logger.info("Successfully imported '{}'\n".format(import_identifier))
+    logger.info("Successfully imported '{}'".format(import_identifier))
 
 
 # Test this script by importing git sources
