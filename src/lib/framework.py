@@ -22,7 +22,7 @@ from colorama import Fore
 # We attempt to get the framework from the ENV VARIABLE FRAMEWORK
 def cache_framework(framework_identifier: Optional[str] = None,
                     source_dir: str = ".source") -> Optional[str]:
-    logger = Logger("FRAMEWORK", Fore.LIGHTMAGENTA_EX)
+    logger = Logger("FRAMEWORK", Fore.LIGHTGREEN_EX)
     logger.info("Attempting to cache or load a cached version of the framework ...")
 
     # Define the source directory and framework file
