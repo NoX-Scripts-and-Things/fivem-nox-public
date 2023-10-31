@@ -13,8 +13,39 @@ git init
 
 prepare_scripts
 
-(
-  cd ./.source/fivem-nox-public || exit 1
-  activate_python
-  GIT_PYTHON_GIT_EXECUTABLE="$(which git)" python ./src/"$INITIAL_SCRIPTS" "$ARG1" "$ARG2"
-)
+
+case $INITIAL_SCRIPTS in
+  base)
+    (
+      cd ./.source/fivem-nox-public || exit 1
+      activate_python
+      GIT_PYTHON_GIT_EXECUTABLE="$(which git)" python ./src/init-base.py "$ARG1" "$ARG2"
+    )
+    (
+      cd ./.source/fivem-nox-server || exit 1
+      activate_python
+      ./.source/fivem-nox-server/src/build-server.sh
+    )
+    (
+      cd ./.source/fivem-nox-testing-suite || exit 1
+      activate_python
+    )
+    (
+      cd ./.source/fivem-nox-core || exit 1
+      activate_python
+    )
+    ;;
+
+  test-framework)
+    (
+      cd ./.source/fivem-nox-public || exit 1
+      activate_python
+      GIT_PYTHON_GIT_EXECUTABLE="$(which git)" python ./src/init-test-framework.py "$ARG1" "$ARG2"
+    )
+    ;;
+
+  *)
+    echo -n "Unknown scripts ..."
+    ;;
+esac
+
